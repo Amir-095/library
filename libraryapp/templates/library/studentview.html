@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+}
+        table {
+            width: 70%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #808080;
+            margin-top:30px;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 15px;
+            text-align: left;
+            color: white;
+        }
+        th {
+            background-color: #293133;
+        }
+        .delete-btn {
+            background-color: #494949; /* Set the background color */
+            color: #ffffff; /* Set the text color */
+            padding: 10px 20px; /* Adjust padding as needed */
+            border: none; /* Remove border */
+            cursor: pointer; /* Change cursor on hover */
+            border-radius: 5px; /* Add rounded corners */
+        }
+    </style>
+</head>
+<body>
+    {% include "library/navbar.html" %}
+    <table>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Номер</th>
+            <th>Действия</th>
+        </tr>
+        {% for s in students %}
+        <tr>
+            <td>{{s.get_name}}</td>
+            <td>{{s.get_surname}}</td>
+            <td>{{s.nomer}}</td>
+            <td>
+                <!-- Кнопка для удаления студента -->
+                <form method="post" action="{% url 'delete_student' s.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

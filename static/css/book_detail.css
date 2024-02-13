@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.book {
+    display: flex;
+    position:absolute;
+    top:100px;
+    margin: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book img {
+    margin-right: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book div {
+    flex: 1;
+}
+
+.book h2 {
+    color: #333;
+}
+
+.book p {
+    color: #555;
+    line-height: 1.5;
+}
+.osnov{
+width:1500px;
+}
+.book strong {
+    color: #333;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+.book {
+    display: flex;
+    position:absolute;
+    top:100px;
+    left:40px;
+    margin: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+}
+
+.book img {
+    margin-right: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book div {
+    flex: 1;
+}
+
+.book h2 {
+    color: #333;
+}
+
+.book p {
+    position: relative;
+    left:-30px;
+    colocdliberyr: #555;
+    line-height: 1.5;
+}
+.osnov{
+width:100px;
+}
+}
+
+/* book_detail.css */
+
+body {
+    background-color: #7abecc; /* Голубой цвет фона */
+}
+
+.book {
+    /* Добавьте стили для контейнера .book при необходимости */
+}
+
+.osnov {
+    /* Добавьте стили для .osnov при необходимости */
+}
+

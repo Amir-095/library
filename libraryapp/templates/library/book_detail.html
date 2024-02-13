@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Метро 2035</title>
+    <link rel="stylesheet" href="{% static "css/book_detail.css" %}" />
+</head>
+
+<body>
+    <div class="book" >
+        <img src="{{book.image.url}}" width="200">
+        <div class="osnov" >
+            <h2>{{ book.avtor_name }} </h2>
+            <p>
+                 {{ book.description }}
+            </p>
+            <p><strong>ISBN: {{ book.isbn }}</strong></p>
+            <p><strong>Издательство: {{ book.izdatelstvo }}</strong></p>
+            <p><strong>Возраст : {{book.vozrast}}</strong></p>
+            <p><strong>Категория : {{book.category}}</strong></p>
+        </div>
+    </div>
+{% include "library/navbar.html" %}
+</body>
+
+</html>

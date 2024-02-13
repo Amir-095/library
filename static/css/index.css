@@ -1,0 +1,134 @@
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+body{
+background-color:#f6f6f6;
+font-family: Arial, sans-serif;}
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .image-block {
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+    }
+
+    .image-block img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .section-title {
+        margin-top: 50px;
+    }
+
+
+.search{
+width:938px;
+height:38px;
+border: 0.1px solid #B2B2B2;
+border-radius:5px;
+outline:none;
+padding: 8px 20px 8px 44px;
+}
+.sbutton{
+        background-color: #F0F0F0;
+        color: #333333;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 0px;
+        cursor: pointer;
+        border-radius: 5px;
+}
+.sform{
+position:absolute;
+top:440px;
+left:450px;
+}
+.lupa{
+position:absolute;
+height:65%;
+top:10px;
+left:5px;
+margin-right: 100px;
+order: -1;
+}
+.logo{
+position:absolute;
+height:55%;
+left:700px;
+}
+.book {
+    position:relative;
+    top:500px;
+    margin: 20px;
+    left:800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width:200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book img {
+    margin-right: 0px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book h2 {
+    color: #333;
+    text-align:center;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 107%;
+    }
+
+    /* Логотип перемещается под navbar */
+    .logo {
+        position: absolute;
+        top:200px;
+        left:-10px;
+    }
+
+    .sform {
+        position: absolute;
+        left:10px;
+        top:460px;
+    }
+    .search{
+        width: 100%;
+    }
+    /* Стили для кнопки поиска */
+    .sbutton {
+        font-size: 16px;
+        margin-top: 10px; /* Добавляем отступ сверху */
+    }
+    .lupa{
+        height:30%;
+        position: absolute;
+        top:5px;
+    }
+    .book {
+    position:relative;
+        left:50px;
+        top:350px;
+}
+}
+

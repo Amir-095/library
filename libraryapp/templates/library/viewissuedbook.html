@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+                * {
+    padding: 0;
+    margin: 0;
+}
+        .container {
+            width: 70%;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #808080;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 15px;
+            text-align: left;
+            color: white;
+        }
+        th {
+            background-color: #293133;
+        }
+          .delete-btn {
+            background-color: #494949; /* Set the background color */
+            color: #ffffff; /* Set the text color */
+            padding: 10px 20px; /* Adjust padding as needed */
+            border: none; /* Remove border */
+            cursor: pointer; /* Change cursor on hover */
+            border-radius: 5px; /* Add rounded corners */
+        }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbar.html" %}
+    <br>
+    <br>
+    <center><h2>Выданные книги студентам</h2></center>
+<br>
+    {% if li%}
+    <div class="container">
+      <table >
+        <thead>
+        <tr>
+        <th>Имя студента</th>
+        <th>ID</th>
+        <th>Название книги</th>
+        <th>Автор</th>
+        <th>Дата выдачи</th>
+        <th>Дата истечения</th>
+        <th>Штраф</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+          {% for t in li %}
+            <tr>
+              <td>{{t.0}}</td>
+              <td>{{t.1}}</td>
+              <td>{{t.2}}</td>
+              <td>{{t.3}}</td>
+              <td>{{t.4}}</td>
+              <td>{{t.5}}</td>
+              <td>{{t.6}}</td>
+                <td>
+          <form method="post" action="{% url 'delete_issued_book' %}">
+              {% csrf_token %}
+              <input type="hidden" name="nomer" value="{{ t.1 }}">
+              <input type="hidden" name="isbn" value="{{ t.7 }}">
+               <button type="submit" class="delete-btn">Удалить</button>
+          </form>
+      </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+        </table>
+    </div>
+    {%else%}
+    <h1> Выдано 0 книг</h1>
+    {%endif%}
+
+
+  </body>
+</html>

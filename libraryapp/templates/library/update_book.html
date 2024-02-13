@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static "css/addbook.css" %}" />
+</head>
+<body>
+   <div class="navbar">
+      {% include "library/navbar.html" %}
+ </div>
+
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            <center><h2 class="form-title">Обновление книги</h2></center><br>
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="form-field">
+                <label class="form-label">{{ field.label_tag }}</label>
+                {{ field }}
+              </div><br>
+            {% endfor %}
+            {{ error_message|default:"" }}
+            <br><br>
+            <button class="form-button" type="submit">Обновить</button><br><br>
+
+        </form>
+</body>
+</html>

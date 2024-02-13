@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Библиотека</title>
+    <link rel="stylesheet" href="{% static "css/index.css" %}" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+{% include "library/navbar.html" %}
+ <img class="logo" src="{%static "images/logo.png"%}">
+
+<form action="{% url 'search'%}" method="get" class="sform">
+<input type="search" name="q" placeholder="Поиск книги" class="search">&nbsp;
+    <button type="submit" class="sbutton">Найти</button>
+ <img class="lupa" src="{%static "images/lupa.png"%}">
+</form>
+
+{% if q %}
+    {% for books in book %}
+        <div class="book">
+            <img src="{{books.image.url}}" width="200">
+            <a href="{% url 'book_detail' books.id%}"><h2>{{ books.name }} </h2></a>
+        </div>
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>

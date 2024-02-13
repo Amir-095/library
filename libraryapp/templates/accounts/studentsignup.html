@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/reg.css" %}" />
+    <style>
+        /* Добавьте это в ваш файл CSS или включите в тег style в head вашего HTML-документа */
+
+        /* Стили для фонового оверлея */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+            z-index: 1;
+        }
+
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        /* Стили для кнопки закрытия в модальном окне */
+        .modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Добавьте эффект при наведении на кнопку закрытия */
+        .modal-content .close:hover {
+            color: #f00;
+        }
+
+        /* Добавьте этот стиль, чтобы модальное окно стало видимым, когда флажок отмечен */
+        #terms:checked + .overlay {
+            display: block;
+        }
+
+        #terms:checked + .overlay + .modal {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Регистрация</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label>Имя:</label>
+        {{form.first_name}}
+        <label>Фамилия:</label>
+        {{form.last_name}}
+        <label>Имя пользователя:</label>
+        {{form.username}}
+        <label>Пароль:</label>
+        {{form.password}}
+        <label>Номер ID карты:</label>
+        {{form2.nomer}}
+        <br>
+        <label for="terms" onclick="toggleModal()" style="cursor: pointer;">Я согласен с пользовательским соглашением</label>
+        <input type="checkbox" id="terms" name="terms" required >
+        <br>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <div class="login-link">
+        Уже есть аккаунт? <a href="/login">Войдите</a>
+    </div>
+</div>
+
+<!-- Модальное окно -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="toggleModal()">&times;</span>
+        <p><strong>Пользовательское соглашение</strong></p>
+        <p>Добро пожаловать! Прежде чем продолжить, пожалуйста, внимательно ознакомьтесь с нашими правилами и условиями:</p>
+        <p>1. <strong>Обязательства студента:</strong> Студент обязуется возвращать книгу в заданные сроки в первоначально выданном виде. При утери, нанесения ущерба или же поздней сдачи книги прилагается штраф. В зависимости от характера ущерба или степени задержки, размер штрафа может быть определен администрацией библиотеки. Это условие направлено на поддержание порядка и обеспечение доступности литературы для всех студентов.</p>
+        <p>2. <strong>Безопасность данных:</strong> Мы обеспечиваем высокий уровень безопасности в отношении хранения паролей пользователей. Пароли обрабатываются с использованием криптографической хэш-функции PBKDF2 с алгоритмом SHA-256. Этот метод гарантирует защиту паролей путем добавления дополнительных уровней безопасности, таких как соль (случайная строка) и повышение устойчивости к злоупотреблениям. Мы придерживаемся высших стандартов в области конфиденциальности и безопасности, чтобы обеспечить защиту личных данных наших пользователей.</p>
+        <p>3. <strong>Согласие на обработку данных:</strong> Студент соглашается на обработку своих персональных данных в соответствии с политикой конфиденциальности.</p>
+        <p>Спасибо за внимание к нашим правилам! Регистрируясь, вы подтверждаете свое согласие с этими условиями.</p>
+    </div>
+</div>
+
+<script>
+    function toggleModal() {
+        var modal = document.getElementById('myModal');
+        var checkbox = document.getElementById('terms');
+
+        modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        checkbox.checked = modal.style.display === 'block';
+    }
+
+    window.onclick = function (event) {
+        var modal = document.getElementById('myModal');
+        var checkbox = document.getElementById('terms');
+
+        if (event.target == modal) {
+            modal.style.display = 'none';
+            checkbox.checked = false;
+        }
+    }
+</script>
+
+</body>
+</html>

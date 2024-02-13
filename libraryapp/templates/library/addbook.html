@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Добавить книгу</title>
+    <link rel="stylesheet" href="{% static "css/addbook.css" %}" />
+
+  </head>
+  <body>
+
+   <div class="navbar">
+      {% include "library/navbar.html" %}
+ </div>
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            <center><h2 class="form-title">Добавление книги в Библиотеку</h2></center><br>
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="form-field">
+                <label class="form-label">{{ field.label_tag }}</label>
+                {{ field }}
+              </div><br>
+            {% endfor %}
+            {{ error_message|default:"" }}
+            <br><br>
+            <button class="form-button" type="submit">Добавить</button><br><br>
+
+        </form>
+        <div class="form-link">Просмотр доступных книг в Библиотеке <a href="/allbook">Клик</a></div>
+    </div>
+  </body>
+</html>

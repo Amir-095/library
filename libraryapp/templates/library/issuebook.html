@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="{% static "css/issuebook.css" %}" />
+    <title>Выдача книг</title>
+  </head>
+  <body>
+ <div class="navbar">
+      {% include "library/navbar.html" %}
+ </div>
+    <div class="form-container">
+        <form method="post" >
+            <center><h2 class="form-title">Выдать книгу студенту</h2></center><br>
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="form-field">
+                <label class="form-label">{{ field.label_tag }}</label>
+                {{ field }}
+                  <br><br>
+              </div>
+            {% endfor %}
+
+            {% if form.non_field_errors %}
+            <div class="form-error">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+            <br>
+            <button class="form-button" type="submit">Выдать</button><br><br>
+        </form>
+        <div class="form-link">Выданные книги студентам <a href="../viewissuedbook">Клик</a></div>
+    </div>
+  </body>
+</html>

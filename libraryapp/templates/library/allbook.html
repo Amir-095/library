@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+}
+        .books-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            gap: 20px;
+            position:absolute;
+            left:100px;
+        }
+
+        .book-container {
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .book-container img {
+            max-width: 100%;
+            height: auto;
+            max-width: 200px;
+            max-height: 200px;
+            border: 1px solid gray;
+        }
+
+        .btn-details {
+            margin-top: 10px;
+            padding: 8px 15px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #313131;
+            border: 1px solid #313131;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    {% include "library/navbar.html" %}
+    <br>
+    <br>
+    <h3 style='font-size: 30px; text-align: center;'>Доступные книги в библиотеке</h3>
+    {% if book %}
+    <div class="books-container">
+        {% for books in book %}
+        <div class="book-container">
+            <img src="{{books.image.url}}"><br>
+            <h2>{{books.name}}</h2>
+            <p>Автор: {{books.avtor_name}}</p>
+            {% if request.user.is_superuser %}
+            <a href="{% url 'delete-book' books.id%}"><button class="btn-details">Удалить</button></a>
+            <a href="{% url 'update-book' books.id%}"><button class="btn-details">Обновить Книгу</button></a>
+            {% endif %}
+            <a href="{% url 'book_detail' books.id%}"><button class="btn-details">Подробнее</button></a><br><br>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+    <h1>На данный момент в Библиотеке нету книг</h1>
+    {% endif %}
+</body>
+
+</html>

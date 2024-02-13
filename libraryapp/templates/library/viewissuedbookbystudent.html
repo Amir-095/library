@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .row {
+            display: flex;
+            justify-content:center;
+            margin-left:100px;
+            margin-right:-100px;
+        }
+        .table1, .table2 {
+            width: 45%;
+            margin: 0 -6.5%;
+        }
+          table {
+            width: 75%;
+            margin: 0;
+            border-collapse: collapse;
+            background-color: #808080;
+            margin-top:30px;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 15px;
+            text-align: left;
+            color: white;
+        }
+        th {
+            background-color: #293133;
+        }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbar.html" %}<br><br>
+    <h3 style = 'font-size: 50px;text-align:center;'>Книги выданные вам</h3>
+
+    <div class="row">
+      <div class="table1">
+        {% if li1 %}
+        <table>
+          <thead>
+            <tr>
+              <th>Название книги</th>
+              <th>Автор</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in li1 %}
+            <tr>
+              <td>  {{t.0}}</td>
+              <td>  {{t.1}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table2">
+        <table class="table table-hover table-condensed table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Дата выдачи</th>
+              <th>Дата истечения</th>
+              <th>Штраф</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in li2 %}
+            <tr>
+              <td>  {{t.0}}</td>
+              <td>  {{t.1}}</td>
+              <td>  {{t.2}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <h1> Вам не выданы книги</h1>
+        {% endif %}
+      </div>
+    </div>
+
+  </body>
+</html>
