@@ -11,5 +11,6 @@
 8. python manage.py makemigrations
 9. python manage.py migrate
 10. Запустите проект
+11. python manage.py runserver
 # Дополнительная информация
 Для создания аккаунта администратора библиотеки , создайте superuser-а через терминал.
