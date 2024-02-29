@@ -13,7 +13,7 @@ WORKDIR /app
 
 # Install pip requirements
 COPY requirements.txt /app/
-RUN apt-get update && apt-get install -y libpq-dev python-dev-is-python3 && pip install wheel
+
 RUN python -m pip install -r requirements.txt
 
 
