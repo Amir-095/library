@@ -75,14 +75,23 @@ WSGI_APPLICATION = 'library.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+from dotenv import load_dotenv
+import os
+load_dotenv()
+POSTGRES_DB = os.environ.get('POSTGRES_DB')
+POSTGRES_US = os.environ.get('POSTGRES_US')
+POSTGRES_PASS = os.environ.get('POSTGRES_PASSWORD')
+POSTGRES_HOST = "localhost"
+POSTGRES_PORT = 5432
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'library',
-        'USER': 'amir',
-        'PASSWORD': '9950',
-        'HOST': '107.20.28.207',
-        'PORT': '5432',
+        'NAME': POSTGRES_DB,
+        'USER': POSTGRES_US,
+        'PASSWORD': POSTGRES_PASS,
+        'HOST': POSTGRES_HOST,
+        'PORT': POSTGRES_PORT,
     }
 }
 # Password validation
